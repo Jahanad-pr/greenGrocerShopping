@@ -1,0 +1,334 @@
+/* Bismillah */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.Sansation-font {
+  font-family: 'mo', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* Other styles for your container */
+}
+
+
+.custom-select {
+  appearance: none; /* Remove default arrow */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none; /* For Firefox */
+  background-color: #f0f0f0; /* Background color */
+  padding: 10px;
+  outline: 0;
+  border-radius: 444px;
+  padding-left: 20px;
+  padding-right: 40px;
+  color: #333;
+  background-image: url("../src/assets/images/arrow-down-double-line.svg"); /* Custom icon */
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* Position the icon */
+  background-size: 20px;
+  width: 200px;
+}
+
+.custom-selecter {
+  appearance: none; /* Remove default arrow */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none; /* For Firefox */
+  /* Background color */
+  padding: 10px;
+  outline: 0;
+  border-radius: 444px;
+  padding-left: 20px;
+  padding-right: 40px;
+  color: #333;
+  background-image: url("../src/assets/images/arrow-down-double-line.svg"); /* Custom icon */
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* Position the icon */
+  background-size: 20px;
+}
+
+.custom-selectero {
+  appearance: none; /* Remove default arrow */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none; /* For Firefox */
+  /* Background color */
+  padding: 10px;
+  outline: 0;
+  border-radius: 444px;
+  padding-left: 20px;
+  padding-right: 40px;
+  background-image: url("../src/assets/images/dw.png");
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* Position the icon */
+  background-size: 20px;
+  /* backdrop-filter: brightness(1); */
+}
+.custom-selecteror{
+  appearance: none; /* Remove default arrow */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none; /* For Firefox */
+  /* Background color */
+  padding: 10px;
+  outline: 0;
+  border-radius: 444px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-left: auto;
+  /* background-image: url("../src/assets/images/dw.png"); */
+  background-repeat: no-repeat;
+  /* background-position: right 10px center; */
+  background-size: 0px;
+}
+
+.shadower {
+  filter: blur(90px) brightness(0);
+  transform: scale3d(1, 1, 2) rotate3d(1, 0, 0, 75deg);
+  top: 55%;
+  animation: oscillateSacle 8s infinite;
+}
+.shadowed {
+  filter: blur(45px) brightness(0);
+  transform: scale3d(1, 1, 2) rotate3d(1, 0, 0, 75deg);
+  top: 45%;
+  opacity: 25%;
+  animation: oscillateSacler 8s infinite ;
+}
+.oscillate {
+  animation: oscillate 8s infinite;
+}
+.oscillater {
+  animation: oscillater 8s infinite;
+}
+
+@keyframes oscillateSacle {
+  0% {
+    filter: blur(90px) brightness(0);
+    transform: scale3d(1, 1, 2) rotate3d(1, 0, 0, 75deg) translateX(-50%);
+  }
+  80% {
+    filter: blur(90px) brightness(0);
+    transform: scale3d(1, .8, 2) rotate3d(1, 0, 0, 75deg) translateX(-50%);
+  }
+  100% {
+    filter: blur(90px) brightness(0);
+    transform: scale3d(1, 1, 2) rotate3d(1, 0, 0, 75deg) translateX(-50%);
+  }
+}
+
+@keyframes oscillateSacler {
+  0% {
+    filter: blur(45px) brightness(0);
+    transform: scale3d(1, 1, 2) rotate3d(1, 0, 0, 75deg) ;
+  }
+  80% {
+    filter: blur(30px) brightness(0);
+    transform: scale3d(1, .8, 2) rotate3d(1, 0, 0, 75deg) ;
+  }
+  100% {
+    filter: blur(45px) brightness(0);
+    transform: scale3d(1, 1, 2) rotate3d(1, 0, 0, 75deg) ;
+  }
+}
+
+@keyframes oscillater {
+  0% {
+    transform: translateY(30%) ;
+  }
+  90% {
+    transform: translateY(20%) ; /* Adjust this value as needed */
+  }
+  100% {
+    transform: translateY(30%) ;
+  }
+}
+
+@keyframes oscillate {
+  0% {
+    transform: translateY(0);
+  }
+  80% {
+    transform: translateY(50px); /* Adjust this value as needed */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.custom-selecto {
+  appearance: none; /* Remove default arrow */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none; /* For Firefox */
+  /* Background color */
+  padding: 10px;
+  outline: 0;
+  border-radius: 444px;
+  padding-left: 20px;
+  padding-right: 40px;
+  background-image: url("../src/assets/images/arrow-down-double-line.svg");
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* Position the icon */
+  background-size: 20px;
+}
+
+.calistoga-regular {
+  font-family: "Calistoga", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lemon-regular {
+  font-family: "Lemon", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.price {
+  background: -webkit-linear-gradient(#2b7b22, #5c8f31);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.h1 {
+  background: -webkit-linear-gradient(#a0aa44, #4b4609);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-product {
+  background-image: url("./assets/images/carbg.png");
+  background-size: cover;
+  background-position: center;
+}
+
+
+.bg-prof {
+  background-image: url("./assets/images/probg.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.list {
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  padding:20px 20px 40px 5px;
+}
+
+.list .item {
+  position: relative;
+  transition: all 0.5s;
+  transform-origin: center;
+  /* Basic styles for visual clarity */
+  color: white;
+
+  font-weight: bold;
+}
+
+/* Create the "thickness" */
+.list .item::before,
+.list .item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ceb6499c; /* Darker shade for depth effect */
+  transition: all 0.5s;
+  transform-origin: center;
+}
+
+/* Left side */
+.list .item::before {
+  transform: translateZ(-5px) rotateY(90deg); /* Adjust -5px for more thickness */
+}
+
+/* Right side */
+.list .item::after {
+  transform: translateZ(5px) rotateY(90deg); /* Adjust 5px for more thickness */
+}
+
+/* Scale and rotate effect on hover */
+.list .item:hover {
+  transform: scale(1.1) ;
+}
+
+.list .item:hover + * {
+  transform: scale(1.01) translateZ(0) rotateY(40deg);
+}
+
+.list .item:has(+*:hover) {
+  transform: scale(1.01) translateZ(0) rotateY(-40deg);
+}
+
+
+.custom-toast {
+  background :linear-gradient(45deg,rgba(0, 0, 0, 0.062),rgba(226, 115, 107, 0.226)) !important;
+  border-radius: 15px !important;
+  backdrop-filter: blur(10px);
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-top: 2px solid #66666646;
+  border-left: 2px solid #5e5d5d09;
+}
+
+.custom-toast-body {
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 500;
+  color: rgb(80, 79, 79);
+}
+
+.custom-progress-bar {
+  background: #e74d3c2c;
+  height: 5px;
+}
+.Toastify__progress-bar {
+  height: 3px !important; /* Adjust this value to increase the height */
+  /* background: #e4565656 !important; */
+}
+
+/* _______________________________________ */
+
+
+.custom-toast-success {
+  background :linear-gradient(45deg,rgba(111, 226, 107, 0.226),rgba(0, 0, 0, 0.062)) !important;
+  border-radius: 15px !important;
+  backdrop-filter: blur(10px);
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-top: 2px solid #66666646;
+  border-left: 2px solid #8f8d8d6b;
+}
+
+.custom-toast-body-success {
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 500;
+  color: rgb(80, 79, 79);
+}
+
+.custom-progress-bar-success {
+  background: #60ad212d;
+  height: 5px;
+}
+.Toastify__progress-bar-success {
+  height: 3px !important; /* Adjust this value to increase the height */
+  background: #8cad1348 !important;
+}

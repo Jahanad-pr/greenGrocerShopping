@@ -1,0 +1,433 @@
+.custom-slider {
+  padding: 15px 0;
+}
+
+.rs-slider-handle {
+  top: -5px;
+  width: 16px !important;
+  height: 16px !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 2px solid #8aa595 !important;
+  box-shadow: 0 2px 8px rgba(138, 165, 149, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+  border-radius: 50% !important;
+}
+
+.rs-slider-handle:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 1) !important;
+  border-color: #52aa57 !important;
+  box-shadow: 0 2px 10px rgba(82, 170, 87, 0.3);
+}
+
+.rs-slider-progress-bar {
+  background: linear-gradient(90deg, #8aa595, #52aa57) !important;
+  height: 6px !important;
+  box-shadow: 0 2px 8px rgba(138, 165, 149, 0.2);
+}
+
+.rs-slider-bar {
+  height: 6px !important;
+  background: rgba(138, 165, 149, 0.1) !important;
+  backdrop-filter: blur(5px);
+  border-radius: 3px !important;
+}
+
+.rs-slider-mark {
+  top: 15px;
+}
+
+.rs-slider-mark-content {
+  color: #8aa595;
+  font-size: 12px;
+}
+
+.rs-tooltip {
+  background-color: #8aa595 !important;
+  border: none !important;
+  padding: 4px 8px !important;
+  font-size: 12px !important;
+}
+
+.rs-tooltip.placement-top .rs-tooltip-arrow {
+  border-top-color: #8aa595 !important;
+}
+
+/* Search input styling */
+.search-input {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(138, 165, 149, 0.2);
+  border-radius: 10px;
+  padding: 12px 20px;
+  width: 100%;
+  color: #14532d;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.search-input:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(138, 165, 149, 0.3);
+}
+
+.search-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #52aa57;
+  box-shadow: 0 4px 15px rgba(82, 170, 87, 0.15);
+}
+
+.search-input::placeholder {
+  color: rgba(20, 83, 45, 0.6);
+}
+
+/* Search container */
+.search-container {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.search-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8aa595;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus + .search-icon {
+  color: #52aa57;
+}
+
+/* Category checkboxes */
+.category-checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #8aa595;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-checkbox:checked {
+  background: linear-gradient(135deg, #8aa595, #52aa57);
+  border-color: #52aa57;
+}
+
+.category-checkbox:hover {
+  border-color: #52aa57;
+  box-shadow: 0 2px 8px rgba(82, 170, 87, 0.2);
+}
+
+/* Category radio buttons */
+.category-radio {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #6e645c;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.category-radio:checked {
+  border-color: #b4c7c4;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.category-radio:checked::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #8aa595, #52aa57);
+  border-radius: 50%;
+  animation: radioScale 0.2s ease;
+}
+
+.category-radio:hover {
+  border-color: #52aa57;
+  box-shadow: 0 2px 8px rgba(82, 170, 87, 0.2);
+}
+
+@keyframes radioScale {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Label styling */
+.category-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: 30px;
+  border-bottom-right-radius: 120px;
+  background: #73b49a1b;
+  backdrop-filter: blur(10px);
+  /* margin-left: 10px; */
+  /* border: 1px solid rgba(138, 165, 149, 0.2); */
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-weight: 500;
+  color: #10291acb;
+}
+
+.category-label:hover {
+  background: rgba(138, 165, 149, 0.15);
+  border-color: rgba(138, 165, 149, 0.3);
+  transform: translateX(4px);
+}
+
+.category-label input:checked + span {
+  color: #809e8c;
+}
+
+/* Price display */
+.price-range-display {
+  background: rgba(138, 165, 149, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(138, 165, 149, 0.2);
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: #14532d;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.price-range-display:hover {
+  background: rgba(138, 165, 149, 0.15);
+  border-color: rgba(138, 165, 149, 0.3);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: .1;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-card {
+  animation: fadeInUp 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+/* Stagger the animations */
+.product-grid > *:nth-child(1) { animation-delay: 0.1s; }
+.product-grid > *:nth-child(2) { animation-delay: 0.2s; }
+.product-grid > *:nth-child(3) { animation-delay: 0.3s; }
+.product-grid > *:nth-child(4) { animation-delay: 0.4s; }
+.product-grid > *:nth-child(5) { animation-delay: 0.5s; }
+.product-grid > *:nth-child(6) { animation-delay: 0.6s; }
+.product-grid > *:nth-child(7) { animation-delay: 0.7s; }
+.product-grid > *:nth-child(8) { animation-delay: 0.8s; }
+.product-grid > *:nth-child(n+9) { animation-delay: 0.9s; }
+
+
+/* {
+  "coupon": {
+      "code": "UITYR2",
+      "amount": 20
+  },
+  "price": {
+      "grandPrice": 97.3,
+      "discountPrice": 18,
+      "others": {
+          "tax": 5.3,
+          "delivery": 40,
+          "totel": 90
+      }
+  },
+  "_id": "675a87dfb4f6cf87e7b19bc8",
+  "user": {
+      "wallet": {
+          "updatedAt": "2024-12-12T05:26:54.702Z",
+          "amount": 117.3,
+          "createdAt": "2024-12-07T06:58:53.571Z"
+      },
+      "_id": "673ec808164a06013bb9de8d",
+      "email": "mshapesacc@gmail.com",
+      "password": "$2a$10$ri1AKmoPLt0XpDnqDSiLCOFo4agHg3vDBDNFytIGOK4TDBhNgAPDS",
+      "username": "Shalu",
+      "phone": 8590245980,
+      "place": "Malppuram",
+      "createdAt": "2024-11-21T05:41:28.888Z",
+      "isVerified": false,
+      "isListed": true,
+      "googleMail": "",
+      "__v": 0,
+      "couponApplyed": {
+          "UI89UI": "1",
+          "UITYR2": 1
+      }
+  },
+  "delivery_address": {
+      "_id": "674601f58f68c0cb72f89180",
+      "uniqueID": "673ec808164a06013bb9de8d1732641269413",
+      "FirstName": "Jahnaad",
+      "LastName": "Puthankotiil",
+      "__v": 0,
+      "city": "Kochi",
+      "createdAt": "2024-11-26T17:14:29.413Z",
+      "exactAddress": "Puthankottil House, apthat po",
+      "idDefault": false,
+      "landmark": "Kochi",
+      "location": null,
+      "locationType": "Home",
+      "phone": 8878675645,
+      "pincode": 897867,
+      "state": "Kerala",
+      "streetAddress": "Mardu,Brototype",
+      "updatedAt": "2024-11-26T17:14:29.413Z",
+      "user": "673ec808164a06013bb9de8d"
+  },
+  "payment_method": "Cash on Delivery",
+  "items": [
+      {
+          "product": {
+              "discount": {
+                  "updatedAt": 1733486957638,
+                  "type": "Discount",
+                  "isPercentage": true,
+                  "value": 20,
+                  "minQuantity": 500,
+                  "maxAmount": 600
+              },
+              "_id": "674df928233175698a1e69d2",
+              "name": "Mango",
+              "pics": {
+                  "one": "http://localhost:3333/uploads/Products/1733163304158-388965434-profile.png",
+                  "three": "http://localhost:3333/uploads/Products/1733163264527-114808607-profile.png",
+                  "two": "http://localhost:3333/uploads/Products/1733163264510-410329781-profile.png"
+              },
+              "isListed": true,
+              "createdAt": "2024-12-02T18:15:04.350Z",
+              "updatedAt": "2024-12-12T06:21:20.848Z",
+              "category": "67330399f1253d47197eec6f",
+              "description": "The king of fruits",
+              "regularPrice": 90,
+              "salePrice": 80,
+              "stock": 204000,
+              "freshness": "Harvested",
+              "harvestedTime": "2024-12-02T12:43:00.000Z",
+              "from": "Shalu's farm",
+              "featured": false,
+              "__v": 0,
+              "productCollection": "673d58fc257ad3f291213a1d"
+          },
+          "quantity": 1000,
+          "_id": "675a87dfb4f6cf87e7b19bc9"
+      }
+  ],
+  "order_id": "1733986271629-M6VJWX",
+  "time": "2024-12-12T06:51:11.629Z",
+  "total_quantity": 1000,
+  "order_status": "Processed",
+  "payment_status": "pending",
+  "__v": 0,
+  "totelProducts": 90,
+  "taxes": 5.3,
+  "deliveryFee": 40
+} */
+
+/* {
+  "coupon": {
+      "code": "UITYR2",
+      "amount": 20
+  },
+  "price": {
+      "grandPrice": 97.3,
+      "discountPrice": 18,
+      "others": {
+          "tax": 5.3,
+          "delivery": 40,
+          "totel": 90
+      }
+  },
+  "_id": "675a87dfb4f6cf87e7b19bc8",
+  "user": "673ec808164a06013bb9de8d",
+  "delivery_address": {
+      "_id": "674601f58f68c0cb72f89180",
+      "uniqueID": "673ec808164a06013bb9de8d1732641269413",
+      "FirstName": "Jahnaad",
+      "LastName": "Puthankotiil",
+      "__v": 0,
+      "city": "Kochi",
+      "createdAt": "2024-11-26T17:14:29.413Z",
+      "exactAddress": "Puthankottil House, apthat po",
+      "idDefault": false,
+      "landmark": "Kochi",
+      "location": null,
+      "locationType": "Home",
+      "phone": 8878675645,
+      "pincode": 897867,
+      "state": "Kerala",
+      "streetAddress": "Mardu,Brototype",
+      "updatedAt": "2024-11-26T17:14:29.413Z",
+      "user": "673ec808164a06013bb9de8d"
+  },
+  "payment_method": "Cash on Delivery",
+  "items": [
+      {
+          "product": {
+              "discount": {
+                  "updatedAt": 1733486957638,
+                  "type": "Discount",
+                  "isPercentage": true,
+                  "value": 20,
+                  "minQuantity": 500,
+                  "maxAmount": 600
+              },
+              "_id": "674df928233175698a1e69d2",
+              "name": "Mango",
+              "pics": {
+                  "one": "http://localhost:3333/uploads/Products/1733163304158-388965434-profile.png",
+                  "three": "http://localhost:3333/uploads/Products/1733163264527-114808607-profile.png",
+                  "two": "http://localhost:3333/uploads/Products/1733163264510-410329781-profile.png"
+              },
+              "isListed": true,
+              "createdAt": "2024-12-02T18:15:04.350Z",
+              "updatedAt": "2024-12-12T06:21:20.848Z",
+              "category": "67330399f1253d47197eec6f",
+              "description": "The king of fruits",
+              "regularPrice": 90,
+              "salePrice": 80,
+              "stock": 204000,
+              "freshness": "Harvested",
+              "harvestedTime": "2024-12-02T12:43:00.000Z",
+              "from": "Shalu's farm",
+              "featured": false,
+              "__v": 0,
+              "productCollection": "673d58fc257ad3f291213a1d"
+          },
+          "quantity": 1000,
+          "_id": "675a87dfb4f6cf87e7b19bc9"
+      }
+  ],
+  "order_id": "1733986271629-M6VJWX",
+  "time": "2024-12-12T06:51:11.629Z",
+  "total_quantity": 1000,
+  "order_status": "Processed",
+  "payment_status": "pending",
+  "__v": 0
+} */

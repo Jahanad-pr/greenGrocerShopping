@@ -1,0 +1,156 @@
+/* Fade In Animation */
+.fade-in {
+  animation: fadeIn 0.8s ease-in;
+}
+
+.fade-in-delay {
+  animation: fadeIn 1s ease-in 0.3s both;
+}
+
+/* Slide Animations */
+.slide-down {
+  animation: slideDown 0.8s ease-out;
+}
+
+.slide-right {
+  animation: slideRight 0.8s ease-out;
+}
+
+.slide-left {
+  animation: slideLeft 0.8s ease-out;
+}
+
+.slide-up {
+  animation: slideUp 0.8s ease-out;
+}
+
+/* Table Row Animation */
+.table-row-animate {
+  opacity: 0;
+  animation: slideUpFade 0.5s ease-out forwards;
+}
+
+/* Generate 10 different animation delays for rows */
+.delay-0 { animation-delay: 0.1s; }
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.3s; }
+.delay-3 { animation-delay: 0.4s; }
+.delay-4 { animation-delay: 0.5s; }
+.delay-5 { animation-delay: 0.6s; }
+.delay-6 { animation-delay: 0.7s; }
+.delay-7 { animation-delay: 0.8s; }
+.delay-8 { animation-delay: 0.9s; }
+.delay-9 { animation-delay: 1.0s; }
+
+/* Rotate Animation */
+.rotate-in {
+  animation: rotateIn 1s ease-out;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(-100px) scale(1.25);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(1.25);
+    opacity: 1;
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes rotateIn {
+  from {
+    transform: rotate(-180deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUpFade {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Scrollbar Styling */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(209, 129, 31, 0.3) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(209, 129, 31, 0.3);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(209, 129, 31, 0.5);
+}
+
+.table-container {
+  max-height: calc(100vh - 400px);
+  overflow-y: auto;
+}
