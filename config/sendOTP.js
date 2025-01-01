@@ -62,7 +62,7 @@ exports.sendOTP = async (mail) => {
 // Function to verify the OTP
 exports.verifyOTP = (email, userOtp) => {
 
-    const otpData = otpStore['mshapesacc@gmail.com'];
+    const otpData = otpStore[email];
     
     // Check if OTP exists and has not expired
     if (!otpData || otpData.expiresAt < Date.now()) {
