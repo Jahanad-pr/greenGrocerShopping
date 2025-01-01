@@ -157,7 +157,7 @@ export default function Home({ userData }) {
         </h1>}
         <div className="w-full px-10 h-auto flex my-5 mt-8 gap-5 items-center justify- mb-10 relative flex-wrap">
         
-          {true && (
+          {userData?._id && (
             <div onClick={() => navigator(`/user/Products`, {
               state: {
                 products: CollData?.data,
@@ -165,7 +165,7 @@ export default function Home({ userData }) {
                 title: `Vegetables`
               }
             })}
-              className="px-8 items-center justify-center mr-10 group flex duration-500 absolute font-medium right-0 top-[-65px] py-2 bg-[linear-gradient(to_left,#7e9d8a,#14532d)] hover:scale-125 text-white tex-[20px] gap-2 rounded-[20px] rounded-bl-[40px]">
+              className="px-8 items-center hidden md:flex justify-center mr-10 group duration-500 absolute font-medium right-0 top-[-65px] py-2 bg-[linear-gradient(to_left,#7e9d8a,#14532d)] hover:scale-125 text-white tex-[20px] gap-2 rounded-[20px] rounded-bl-[40px]">
               <p className="duration-500">Shop Now</p>
               <i className="ri-arrow-right-line rounded-full overflow-hidden -translate-x-5 opacity-0 text-[25px] group-hover:translate-x-0 group-hover:opacity-100 duration-500"></i>
             </div>
@@ -272,7 +272,7 @@ export default function Home({ userData }) {
               Vegetables
             </h1>
             <div className="w-full h-auto  flex my-5 mt-8 gap-5 items-center justify px-10 mb-10 relative flex-wrap">
-            {  true&& (
+            { userData?._id &&  (
                         <div onClick={() => navigator(`/user/Products`, {
                           state: {
                             products: CollData?.data,
@@ -280,7 +280,7 @@ export default function Home({ userData }) {
                             title: `Vegetables`
                           }
                         })}
-                        className="px-8 items-center justify-center mr-10 group flex duration-500 absolute font-medium right-0 top-[-65px] py-2 bg-[linear-gradient(to_left,#7e9d8a,#14532d)] hover:scale-125 text-white tex-[20px] gap-2 rounded-[20px] rounded-bl-[40px]">
+                        className="px-8 items-center justify-center mr-10 group hidden md:flex duration-500 absolute font-medium right-0 top-[-65px] py-2 bg-[linear-gradient(to_left,#7e9d8a,#14532d)] hover:scale-125 text-white tex-[20px] gap-2 rounded-[20px] rounded-bl-[40px]">
                           <p className="duration-500">Shop Now</p>
                           <i className="ri-arrow-right-line rounded-full overflow-hidden -translate-x-5 opacity-0 text-[25px] group-hover:translate-x-0 group-hover:opacity-100 duration-500"></i>
                         </div>
