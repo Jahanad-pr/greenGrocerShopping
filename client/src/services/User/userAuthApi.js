@@ -38,7 +38,7 @@ export const userAuthApi = (builder) => ({
       query: (email) => ({
         url: 'user/getOTP',
         method: 'POST',
-        body: email,
+        body: {mail:email},
         credentials: 'include',
       }),
     }),

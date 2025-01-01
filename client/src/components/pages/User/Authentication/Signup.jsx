@@ -98,9 +98,8 @@ export default function Signup({ setSign }) {
   }, [loginError])
 
   useEffect(() => {
-    // console.log(googleError);
     if (googleError) {
-      showToast(googleError.data, 'error')
+      showToast(googleError.data.message, 'error')
     }
   }, [googleError])
 
@@ -273,7 +272,7 @@ export default function Signup({ setSign }) {
   };
 
   return (
-    <><Tostify />
+    <>
       <ImageUploadPopup
         isOpen={isImagePopupOpen}
         onClose={() => setIsImagePopupOpen(false)}

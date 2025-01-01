@@ -28,6 +28,9 @@ const generateOTP = () => {
 exports.sendOTP = async (mail) => {
   const otp = generateOTP();
 
+  // console.log(mail);
+  
+
 
   // Set up email data with the OTP included
   const mailOptions = {

@@ -201,6 +201,8 @@ module.exports.getUserData = async (req, res) => {
 // Get OTP
 module.exports.getOTP = async (req, res) => {
   const { mail } = req.body;
+  // console.log(mail);
+  
   const message = await sendOTP(mail);
   res.status(message ? 201 : 400).json(message.message);
 };
