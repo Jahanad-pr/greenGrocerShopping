@@ -105,7 +105,7 @@ module.exports.getCAtegoryProducts = async (req, res) => {
 
     try {
 
-        const products = await Product.find({ category: id, isListed: true }).populate('category', 'name discount').limit(10)
+        const products = await Product.find({ category: id, isListed: true }).populate('category', 'name discount')
 
         if (products.length <= 0) {
 
