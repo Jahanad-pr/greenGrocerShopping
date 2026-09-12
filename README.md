@@ -11,6 +11,9 @@ An online grocery shopping platform built with Node.js, Express, and MongoDB —
 
 </div>
 
+
+![App Screenshot](preview/screenshot.png)
+
 ## 📖 About
 
 GreenGrocerShopping is a full-stack e-commerce app for buying groceries online. Users can browse products, add them to a cart, and pay securely through Razorpay, with order confirmations sent by email.
