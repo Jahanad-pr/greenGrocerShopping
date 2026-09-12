@@ -12,7 +12,7 @@ An online grocery shopping platform built with Node.js, Express, and MongoDB —
 </div>
 
 
-![App Screenshot](preview/screenshot.png)
+![App Screenshot](preview/screenshot.jpg)
 
 ## 📖 About
 
