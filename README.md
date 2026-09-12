@@ -107,7 +107,7 @@ vercel.json     # Deployment config
 ## 🎥 Demo Video
 
 <!-- [![Watch the demo](https://via.placeholder.com/900x450.png?text=Click+to+Watch+Demo+Video)]() -->
-<video src="preview/video.mp4" controls width="700"></video>
+<video src="preview/preview.mp4" controls width="700"></video>
 
 
 
