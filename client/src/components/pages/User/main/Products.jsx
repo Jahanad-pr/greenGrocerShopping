@@ -16,8 +16,8 @@ const LoadingAnimation = () => (
       </div>
       <div className="flex gap-2">
         {[0, 1, 2].map((i) => (
-          <div key={i} className="w-4 h-4 bg-green-600 rounded-full animate-bounce" 
-               style={{ animationDelay: `${i * 0.1}s` }}></div>
+          <div key={i} className="w-4 h-4 bg-green-600 rounded-full animate-bounce"
+            style={{ animationDelay: `${i * 0.1}s` }}></div>
         ))}
       </div>
       <p className="text-xl font-medium text-gray-600">Loading products...</p>
@@ -76,16 +76,18 @@ export default function Products({ userData }) {
   if (catLoading) return <LoadingAnimation />;
 
   return (
-    <div className="md:w-[96%] w-full h-full bg-[#f2f2f2]">
+    <div
+      className="md:w-[96%] w-full h-full bg-[#f2f2f2]">
       <div className="w-full h-full backdrop-blur-3xl xl:pl-40 sm:px-20 px-10">
         <div className={`w-full h-screen overflow-y-scroll flex flex-col ${!catData?.data?.length > 0 ? 'justify-center' : 'justify-start'} overflow-scroll`}>
           {catData?.data?.length > 0 ? (
             <>
-              <h1 className="text-[35px] font-bold mt-14">Shop</h1>
+              <h1
+                className="text-[35px] font-bold mt-14">Shop</h1>
               <div className="flex text-[20px] items-center py-3 my-3 font-[500] relative">
                 {catData?.data?.map((data, index) => (
                   data.isListed && (
-                    <p key={index} 
+                    <p key={index}
                       onClick={() => handleCategoryChange(index)}
                       style={{ opacity: cPosition === index ? "100%" : "40%" }}
                       className="w-40 transition-opacity capitalize duration-300 m-0 leading-none cursor-pointer">
@@ -93,8 +95,8 @@ export default function Products({ userData }) {
                     </p>
                   )
                 ))}
-                <div style={{ left: `${160 * cPosition}px` }} 
-                    className="w-16 h-1 duration-500 bg-[#44764850] absolute bottom-0" />
+                <div style={{ left: `${160 * cPosition}px` }}
+                  className="w-16 h-1 duration-500 bg-[#44764850] absolute bottom-0" />
               </div>
 
               <div className={`transition-all duration-300 ${fadeOut ? "opacity-0 transform translate-y-4" : "opacity-100 transform translate-y-0"}`}>
@@ -110,7 +112,7 @@ export default function Products({ userData }) {
                             title: `Collections of ${catData?.data[cPosition].name}`
                           }
                         })}
-                        className="px-8 items-center justify-center group flex duration-500 absolute font-medium right-0 top-[-65px] py-2 bg-[linear-gradient(to_left,#7e9d8a,#14532d)] hover:scale-125 text-white tex-[20px] gap-2 rounded-[20px] rounded-bl-[40px]">
+                          className="px-8 items-center justify-center group flex duration-500 absolute font-medium right-0 top-[-65px] py-2 bg-[linear-gradient(to_left,#7e9d8a,#14532d)] hover:scale-125 text-white tex-[20px] gap-2 rounded-[20px] rounded-bl-[40px]">
                           <p className="duration-500">VIEW ALL</p>
                           <i className="ri-arrow-right-line rounded-full overflow-hidden -translate-x-5 opacity-0 text-[25px] group-hover:translate-x-0 group-hover:opacity-100 duration-500"></i>
                         </div>
@@ -135,7 +137,7 @@ export default function Products({ userData }) {
                             title: `${catData?.data[cPosition].name}`
                           }
                         })}
-                        className="px-8 items-center justify-center group flex duration-500 absolute font-medium right-0 top-[-65px] py-2 bg-[linear-gradient(to_left,#7e9d8a,#14532d)] hover:scale-125 text-white tex-[20px] gap-2 rounded-[20px] rounded-bl-[40px]">
+                          className="px-8 items-center justify-center group flex duration-500 absolute font-medium right-0 top-[-65px] py-2 bg-[linear-gradient(to_left,#7e9d8a,#14532d)] hover:scale-125 text-white tex-[20px] gap-2 rounded-[20px] rounded-bl-[40px]">
                           <p className="duration-500">VIEW ALL</p>
                           <i className="ri-arrow-right-line rounded-full overflow-hidden -translate-x-5 opacity-0 text-[25px] group-hover:translate-x-0 group-hover:opacity-100 duration-500"></i>
                         </div>

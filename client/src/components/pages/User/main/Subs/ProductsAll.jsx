@@ -30,7 +30,9 @@ const ProductsAll = () => {
   };
 
   return (
-    <div className="w-full h-screen overflow-y-auto">
+    <div
+    // onClick={()=>console.log(location?.state)}
+     className="w-full h-screen overflow-y-auto">
       {/* Fixed background blur */}
       <div className="fixed inset-0 bg-[#f2f2f2]" />
       

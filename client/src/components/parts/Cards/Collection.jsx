@@ -8,7 +8,7 @@ export default function CollectionCard({ pos, data, type }) {
   const navigate = useNavigate()
 
   return ( data?.name &&
-    <div onClick={()=>console.log(data)} className={`h-80  min-w-44 max-w-44 md:min-w-56 md:max-w-56 flex flex-col justify-center items-center rounded-[40px] relative group`}>
+    <div  className={`h-80  min-w-44 max-w-44 md:min-w-56 md:max-w-56 flex flex-col justify-center items-center rounded-[40px] relative group`}>
       {/* <img className="px-0 max-w-[80px] shadowed opacity-20 absolute" src={data.pic} alt="" /> */}
 
       <span layoutId='full' className='w-full h-auto bg-[linear-gradient(#ffffff70,#ffffff30)] flex flex-col md:px-10 px-6 rounded-[30px]  md:rounded-br-[120px] rounded-br-[100px] flex-1 justify- gap-2 pb-0'>
