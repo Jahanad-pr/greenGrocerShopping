@@ -19,14 +19,34 @@ module.exports.upsertProducts = async (req, res) => {
             const updatedAt = Date.now()
             const createdAt = Date.now()
 
+            // console.log()
 
 
-            const insertData = { ...formData, isListed, updatedAt, createdAt, productCollection: formData?.productCollection?._id }
 
-            const newProduct = await Product.create(insertData)
+            const insertData = {
+                ...formData,
+                isListed,
+                updatedAt,
+                createdAt,
+                // productCollection: formData?.productCollection,
+            };
+
+            const newProduct = await Product.create(insertData);
 
 
-            if (newProduct) {
+            // Add product to collection
+            // const updatedCollection = await Collection.updateOne(
+            //     { _id: formData.productCollection },
+            //     {
+            //         $push: {
+            //             products: newProduct._id,
+            //         },
+            //     }
+            // );
+
+            // console.log(updatedCollection)
+
+            if (newProduct && updatedCollection) {
                 return res.status(200).json({ mission: true, message: 'successfully created' })
             } else {
                 return res.status(500).json({ mission: false, message: 'nothing updated' })
@@ -43,6 +63,10 @@ module.exports.upsertProducts = async (req, res) => {
 
 
             const result = await Product.updateOne({ _id: formData._id }, { $set: updateData })
+
+            // if()
+
+            // const udpatedColleciton = await Collection.updateOne({_id:productCollection},{$push:{products:result._id}})
 
 
 
@@ -333,7 +357,7 @@ module.exports.updateOffer = async (req, res) => {
     try {
         let productDetails = ''
 
-        console.log(discountData);
+        // console.log(discountData);
 
 
         if (offerFor === "Product") {
@@ -349,7 +373,7 @@ module.exports.updateOffer = async (req, res) => {
 
         if (productDetails) {
 
-            console.log(productDetails);
+            // console.log(productDetails);
 
             return res.status(200).json('Offer udated successfully')
         }
@@ -474,7 +498,7 @@ module.exports.getFilteredProducts = async (req, res) => {
 
         let collectionsData = []
 
-        if(isCollection){
+        if (isCollection) {
 
             collectionsData = await Collection.find({
                 name: { $regex: new RegExp(searchQuery, 'i') }

@@ -31,7 +31,7 @@ const INITIAL_FORM_STATE = {
 
 const CollectionManage = () => {
   // API Mutations
-  const [upsertCollection,{ data }] = useUpsertCollectionMutation();
+  const [upsertCollection, { data }] = useUpsertCollectionMutation();
   const [getCategories, { data: categoriesData }] = useGetCategoriesMutation();
   const [getProducts, { data: productsData }] = useGetProductsMutation();
 
@@ -41,7 +41,7 @@ const CollectionManage = () => {
   const [collectionImage, setCollectionImage] = useState([null]);
   const [showImagePicker, setShowImagePicker] = useState(false);
   const [colorIndex, setColorIndex] = useState(1);
-  const [colors, setColors] = useState({primary:'#333333',secondary:'#555555'});
+  const [colors, setColors] = useState({ primary: '#333333', secondary: '#555555' });
   const [popup, showPop] = useState(false);
   const [isChanged, setChaged] = useState(false);
   const [formState, setFormState] = useState(INITIAL_FORM_STATE);
@@ -51,7 +51,7 @@ const CollectionManage = () => {
   const handleImageSave = (blob) => {
     setImageUrl(blob[0]);
     console.log(blob[0]);
-    
+
   };
 
 
@@ -62,18 +62,33 @@ const CollectionManage = () => {
   // Initialize form data from location state
   useEffect(() => {
     if (location.state?.item) {
-      setFormState(location.state.item);
-      setColors({primary:location.state.item.colorPrimary,secondary:location.state.item.colorSecondary})
-      setSelectedProductIds(location.state.item.products)
-      setCollectionImage([location.state.item.pic])
+      const item = location.state.item;
 
+      setFormState({
+        ...item,
+        category: item.category?._id || item.category || "",
+      });
+
+      setColors({
+        primary: item.colorPrimary,
+        secondary: item.colorSecondary,
+      });
+
+      setSelectedProductIds(
+        item.products?.map((product) =>
+          typeof product === "object" ? product._id : product
+        ) || []
+      );
+
+      setCollectionImage([item.pic]);
     }
   }, [location]);
 
   // set initial category
-  useEffect(()=>{ if(categoriesData?.data&&!formState.category)
-    setFormState((prevData)=>({...prevData,category:categoriesData?.data[0]._id})) 
-  },[categoriesData])
+  useEffect(() => {
+    if (categoriesData?.data && !formState.category)
+      setFormState((prevData) => ({ ...prevData, category: categoriesData?.data[0]._id }))
+  }, [categoriesData])
 
   // Fetch initial data
   useEffect(() => {
@@ -88,11 +103,11 @@ const CollectionManage = () => {
     fetchInitialData();
   }, []);
 
-  useEffect(()=>{ 
-    if(data?.message){
-      navigate('/admin/Collection',{ state:{message:data?.message,status:'success'} });
+  useEffect(() => {
+    if (data?.message) {
+      navigate('/admin/Collection', { state: { message: data?.message, status: 'success' } });
     }
-   },[data])
+  }, [data])
 
 
 
@@ -180,7 +195,7 @@ const CollectionManage = () => {
     //   return "Minimum one product needed";
     // }
 
-    if (!imageUrl&&!formState?.pic) {
+    if (!imageUrl && !formState?.pic) {
       return "Select the image";
     }
 
@@ -190,11 +205,11 @@ const CollectionManage = () => {
   // Utility function to check if a color is light or dark
   function isColorDark(color) {
     let r, g, b;
-  
+
     // If color is in hex format
     if (color && color.startsWith('#')) {
       const hex = color.replace('#', '');
-      
+
       // Ensure hex is 6 characters long (for 3-color hex codes)
       if (hex.length === 6) {
         r = parseInt(hex.substring(0, 2), 16);
@@ -215,21 +230,21 @@ const CollectionManage = () => {
     } else {
       return false; // Unsupported format
     }
-  
+
     // Calculate brightness using the luminance formula
     const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-    
+
     // Return true if the color is dark, false if it's light
     return brightness < 128;
   }
-  
+
   // useEffect(()=>{},[collectionImage])
   function areObjectsEqual(obj1, obj2) {
     // Check if both objects have the same number of keys
     if (Object.keys(obj1).length !== Object.keys(obj2).length) {
       return false;
     }
-  
+
     // Check if values for the same keys are equal
     for (let key in obj1) {
       if (obj1.hasOwnProperty(key)) {
@@ -237,39 +252,39 @@ const CollectionManage = () => {
         if (!obj2.hasOwnProperty(key)) {
           return false;
         }
-  
+
         const val1 = obj1[key];
         const val2 = obj2[key];
-  
+
         // Check if both values are arrays
         if (Array.isArray(val1) && Array.isArray(val2)) {
           // If arrays have different lengths, return false
           if (val1.length !== val2.length) {
             return false;
           }
-  
+
           // Check if all elements in arrays are the same
           for (let i = 0; i < val1.length; i++) {
             if (val1[i] !== val2[i]) {
               return false;
             }
           }
-        } 
+        }
         // If only one of them is an array, return false
         else if (Array.isArray(val1) || Array.isArray(val2)) {
           return false;
-        } 
+        }
         // If they are not arrays and not equal, return false
         else if (val1 !== val2) {
           return false;
         }
       }
     }
-  
+
     // If all checks pass, the objects are equal
     return true;
   }
-  
+
 
 
   const handleCollectionUpdate = async () => {
@@ -281,7 +296,7 @@ const CollectionManage = () => {
       try {
         // let imageUrl = formState?.pic || ''
 
-        
+
         // if(!formState?.pic || collectionImage[0] && isChanged){
 
         //   imageUrl = await uploadImage(collectionImage?.[0]);
@@ -289,33 +304,33 @@ const CollectionManage = () => {
         // }
 
         let collectionData = ''
-        
-        if(!formState?.pic || collectionImage[0]){
-          
+
+        if (!formState?.pic || collectionImage[0]) {
+
           collectionData = {
             ...formState,
-            pic: imageUrl||formState?.pic,
+            pic: imageUrl || formState?.pic,
             products: [...new Set(selectedProductIds)],
-            colorPrimary:colors.primary,
-            colorSecondary:colors.secondary
+            colorPrimary: colors.primary,
+            colorSecondary: colors.secondary
           }
 
-        }else{
+        } else {
 
           collectionData = {
             ...formState,
             products: [...new Set(selectedProductIds)],
-            colorPrimary:colors.primary,
-            colorSecondary:colors.secondary
+            colorPrimary: colors.primary,
+            colorSecondary: colors.secondary
 
           }
         }
-        
-        // console.log(areObjectsEqual(collectionData,location.state.item));
-        if(collectionData,location.state.item){
 
-          if(areObjectsEqual(collectionData,location.state.item)&&!isChanged){
-            return showToast('Nothing Changed','error')
+        // console.log(areObjectsEqual(collectionData,location.state.item));
+        if (collectionData, location.state.item) {
+
+          if (areObjectsEqual(collectionData, location.state.item) && !isChanged) {
+            return showToast('Nothing Changed', 'error')
           }
         }
 
@@ -336,7 +351,7 @@ const CollectionManage = () => {
         onClose={() => setIsImagePopupOpen(false)}
         onSave={handleImageSave}
         showRemoveBg={true}
-        urls={formState?.pic?{[0]:formState?.pic}:false}
+        urls={formState?.pic ? { [0]: formState?.pic } : false}
         maxImages={1}
       />
       {popup && (
@@ -347,7 +362,7 @@ const CollectionManage = () => {
           showPop={showPop}
         />
       )}
-setShowImagePicker
+      setShowImagePicker
       <div className="container w-[105%] pt-[56px] mt-8 relative">
         <div className="w-full h-full overflow-scroll bg-[radial-gradient(circle_at_10%_10%,_rgb(222,255,247)_0%,rgba(255,0,0,0)_100%);] rounded-tl-[65px] flex justify-center relative">
           {/* Back Navigation */}
@@ -364,7 +379,7 @@ setShowImagePicker
           <div className="w-full h-full">
             {/* Header Section */}
             <div className="flex justify-center items-center flex-col my-8">
-              <h1 onClick={()=>console.log(formState)
+              <h1 onClick={() => console.log(productsData?.data)
               } className="text-[30px] font-bold">Manage Collection</h1>
               <p className="text-center opacity-45 px-80">
                 Admins can edit collection details, including changing the
@@ -381,7 +396,7 @@ setShowImagePicker
                 <img
                   onClick={() => setIsImagePopupOpen(true)}
                   className="max-w-[250px] mx-auto w-[80%] border-2 border-gray-300 border-dashed rounded-3xl m-5  cursor-pointer transition-transform hover:scale-105"
-                  src={ imageUrl || formState.pic ||  '/category.svg'}
+                  src={imageUrl || formState.pic || '/category.svg'}
                   alt="Collection"
                 />
               </div>
@@ -447,15 +462,15 @@ setShowImagePicker
                         onClick={() =>
                           setProductSelectorOpen(!isProductSelectorOpen)
                         }
-                        className="w-48 h-32 bg-[#b9ebd4] p-3 flex flex-col gap-3 rounded-[30px] cursor-pointer mt-5 transition-transform hover:scale-105"
+                        className="w-48 bg-[#b9ebd4] p-3 flex flex-col gap-3 rounded-[30px] cursor-pointer mt-5 transition-transform hover:scale-105"
                       >
-                        <div className="w-full h-24 bg-gray-100 rounded-[25px] overflow-hidden">
+                        {/* <div className="w-full h-24 bg-gray-100 rounded-[25px] overflow-hidden">
                           <img
                             src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-3foodgroups_fruits_detailfeature.jpg?sfvrsn=64942d53_4"
                             alt="Products"
                             className="w-full h-full object-cover"
                           />
-                        </div>
+                        </div> */}
                         <p className="font-medium text-[14px] text-center">
                           Add Product
                         </p>
@@ -463,10 +478,10 @@ setShowImagePicker
 
                       {/* Product Dropdown */}
                       {isProductSelectorOpen && (
-                        <div className="absolute top-full mt-2 w-64 bg-white rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto">
+                        <div className="absolute top-20 w-64 bg-white rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto">
                           {productsData?.data?.map(
                             (product) =>
-                              product.isListed && product.category._id===formState.category && (
+                              product.isListed && product.category._id === formState.category && (
                                 <div
                                   key={product._id}
                                   onClick={() =>
@@ -475,11 +490,10 @@ setShowImagePicker
                                   className={`
                                 flex items-center gap-3 p-3 cursor-pointer
                                 transition-colors duration-200
-                                ${
-                                  selectedProductIds.includes(product._id)
-                                    ? "bg-green-50"
-                                    : "hover:bg-goverflow-scrollray-100"
-                                } `}
+                                ${selectedProductIds.includes(product._id)
+                                      ? "bg-green-50"
+                                      : "hover:bg-goverflow-scrollray-100"
+                                    } `}
                                 >
                                   <img
                                     src={product.pics.one}
@@ -512,9 +526,9 @@ setShowImagePicker
                             setColorIndex(index + 1), showPop(true)
                           )}
                           name={`color${colorType}`}
-                          value={index+1===1?colors.primary:colors.secondary}
+                          value={index + 1 === 1 ? colors.primary : colors.secondary}
                           onChange={handleInputChange}
-                          style={{ background: index + 1 === 1 ? colors.primary :colors.secondary, color: isColorDark( colors.primary ) ? "white" : "black", }}
+                          style={{ background: index + 1 === 1 ? colors.primary : colors.secondary, color: isColorDark(colors.primary) ? "white" : "black", }}
                           className="outline-none w-[200px] py-3 px-5 rounded-full text-[13px] transition-all focus:shadow-lg font-medium"
                         />
                       </div>

@@ -83,6 +83,7 @@ export default function Products({ userData }) {
           {catData?.data?.length > 0 ? (
             <>
               <h1
+              onClick={()=>console.log(CollData?.data)}
                 className="text-[35px] font-bold mt-14">Shop</h1>
               <div className="flex text-[20px] items-center py-3 my-3 font-[500] relative">
                 {catData?.data?.map((data, index) => (

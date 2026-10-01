@@ -26,7 +26,7 @@ module.exports.upsertCategory = async(req,res)=>{
 
         }else{
 
-            console.log('Creating new category with name:', name);
+            // console.log('Creating new category with name:', name);
             
 
             const categoryData = {

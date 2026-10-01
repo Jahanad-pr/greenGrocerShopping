@@ -23,6 +23,7 @@ const ProductManage = () => {
   const [upsertProducts, { isLoading, error, data }] = useUpsertProductsMutation();
 
   const [action, setAction] = useState("add");
+  const [isCollectionUpdated, setCollectionUpdated] = useState(false);
   const [popup, showPopup] = useState(false);
   const [images, setImageUrls] = useState(false);
   const [urls, setUrl] = useState({});
@@ -68,12 +69,27 @@ const ProductManage = () => {
 
   // Update formData when an input changes
   const handleChange = (e, pos = 0) => {
+    setCollectionUpdated(true)
     const { name, value } = e.target;
     if (name === 'regularPrice' || name === 'salePrice') {
       setFormData((prevData) => ({ ...prevData, [name]: Number(value) }));
     } else {
       setFormData((prevData) => ({ ...prevData, [name]: value }));
     }
+
+    // if (name === "category") {
+    //   const collectionValue = collData?.data?.find(
+    //     (option) =>
+    //       option.category?._id !==
+    //       (typeof formData.category === "object"
+    //         ? formData.category?._id
+    //         : formData.category) &&
+    //       option.isListed
+    //   )?._id;
+    //   // console.log(collectionValue);
+
+    //   setFormData((prevValue) => ({ ...prevValue, productCollection: collectionValue }))
+    // }
   };
 
   // useEffect(() => {
@@ -174,9 +190,22 @@ const ProductManage = () => {
 
   useEffect(() => {
 
-    if (collData?.data[0] && !formData.productCollection) {
-      setFormData((prevData) => ({ ...prevData, productCollection: collData?.data[0]._id }))
-    }
+    // if (collData?.data[0] && !formData.productCollection) {
+    //   const matchingCollection = collData?.data?.find(
+    //     (option) =>
+    //       option.category?._id ===
+    //       (typeof formData.category === "object"
+    //         ? formData.category?._id
+    //         : formData.category) &&
+    //       option.isListed
+    //   );
+    //   if (matchingCollection) {
+    //     setFormData((prevData) => ({
+    //       ...prevData,
+    //       productCollection: matchingCollection._id,
+    //     }));
+    //   }
+    // }
     if (catData?.data[0] && !formData.category) {
       setFormData((prevData) => ({ ...prevData, category: catData?.data[0]._id }))
     }
@@ -273,7 +302,9 @@ const ProductManage = () => {
 
     try {
 
-      await upsertProducts({ formData: upsertData, action });
+      // upsertData.append()
+
+      await upsertProducts({ formData: { ...upsertData, isCollectionUpdated }, action });
 
 
     } catch (error) {
@@ -436,7 +467,7 @@ const ProductManage = () => {
                         </select>
                       </span>
 
-                      <span className="flex flex-col flex-1 gap-1">
+                      {/* <span className="flex flex-col flex-1 gap-1">
                         <label className="font-bold opacity-55 w-full max-w-[420px] ml-2">
                           Collection
                         </label>
@@ -459,7 +490,7 @@ const ProductManage = () => {
                               )
                           )}
                         </select>
-                      </span>
+                      </span> */}
                     </div>
 
                     {/* Description */}
@@ -598,6 +629,7 @@ const ProductManage = () => {
 
                   <button
                     onClick={handleFormSubmit}
+                    // onClick={() => console.log(formData?.productCollection)}
                     className="px-0 py-[15px] bg-[linear-gradient(to_left,#8CC850,#1F9C64)] text-[13px] rounded-full text-white font-medium mt-5 w-full max-w-[300px]"
                   >
                     {isLoading
