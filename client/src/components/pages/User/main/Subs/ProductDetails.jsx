@@ -451,7 +451,7 @@ export default function ProductDetails({ userData }) {
         @media (prefers-reduced-motion: reduce) { .pd-float, .pd-mirror { animation: none; } }
       `}</style>
       <div style={{ fontFamily: FONT_STACK }} className="relative w-full md:w-[90%] lg:h-full flex-1 bg-product text-[#25241f] overflow-hidden">
-        <div className="absolute inset-0 bg-[#ceb6499c] mix-blend-screen pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[#bd5a339c] mix-blend-screen pointer-events-none"></div>
 
         <div className="relative w-full h-full overflow-y-auto overflow-x-hidden backdrop-blur-3xl">
           {/* centers the whole composition, horizontally and vertically */}
@@ -780,7 +780,7 @@ export default function ProductDetails({ userData }) {
                 </ul>
 
                 {/* related products */}
-                {productsData.length > 0 && (
+                {/* {productsData.length > 0 && (
                   <div className="relative min-w-0">
                     <h2 className="text-lg font-semibold text-center mb-4">
                       Related
@@ -833,7 +833,7 @@ export default function ProductDetails({ userData }) {
                       ))}
                     </div>
                   </div>
-                )}
+                )} */}
               </section>
               </div>
             </div>

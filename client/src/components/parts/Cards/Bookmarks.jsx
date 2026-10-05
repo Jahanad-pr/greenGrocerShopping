@@ -27,7 +27,7 @@ export default function BookmarkCard({ data,userData,setBookData }) {
   const navigate = useNavigate();
 
   useEffect(()=>{
-    checkPorductInCart(data.product._id)
+    checkPorductInCart(data?.product?._id)
   },[])
 
 
@@ -41,7 +41,7 @@ export default function BookmarkCard({ data,userData,setBookData }) {
   useEffect(() => {
     if (removeData) {
       showToast("Removed from bookmark", "success");
-      setBookData((prevData) => prevData.filter((item) => item.product._id !== data.product._id));
+      setBookData((prevData) => prevData.filter((item) => item.product?._id !== data?.product?._id));
     }
   }, [removeData]);
 
@@ -59,7 +59,7 @@ export default function BookmarkCard({ data,userData,setBookData }) {
   if(addData||goToCart){
     navigate('/user/cart')
   }else{
-    addToCartItem(data.product._id)
+    addToCartItem(data?.product?._id)
   }
     
  }
@@ -72,7 +72,7 @@ export default function BookmarkCard({ data,userData,setBookData }) {
         <DeletePopup
         action={'remove from bookmark'}
           updater={removeBookmark} 
-          deleteData={{id:data.product._id}} 
+          deleteData={{id:data?.product?._id}} 
           // setDeleteData={setDeleteData}
           showPopup={setDPopup}
           isUser={true}
@@ -88,15 +88,15 @@ export default function BookmarkCard({ data,userData,setBookData }) {
         <img className='group-hover:-translate-x-full min-w-[70px] p-5 brightness-[100]  duration-500' src="/arrow-right.svg" alt="" />
       </button>
 
-      <div className={`w-60 h-60 overflow-hidden bg-[#e6e9e7] rounded-[30px] ${data.is_collection?'rounded-tr-[120px]':'rounded-bl-[120px]'} -z-10`}>
+      <div className={`w-60 h-60 overflow-hidden bg-[#e6e9e7] rounded-[30px] ${data?.is_collection?'rounded-tr-[120px]':'rounded-bl-[120px]'} -z-10`}>
 
       <div className=" h-auto w-auto pl-8 relative py-2 z-10 leading-none">
 
-        <p onClick={()=>console.log(data.product)} className="text-[25px] font-bold mt-3 text-black">{data.product.name}</p>
-        <p className="text-[20px] font-medium text-[#2b662c]">{data.product?.category?.name}</p>
+        <p onClick={()=>console.log(data?.product)} className="text-[25px] font-bold mt-3 text-black">{data?.product?.name}</p>
+        <p className="text-[20px] font-medium text-[#2b662c]">{data?.product?.category?.name}</p>
         {
           !data.is_collection &&
-          <img onClick={()=>(navigate('/user/productPage',{ state:{ id:data.product._id } }))}  className='group-hover:-translate-x-full cursor-pointer absolute top-0 right-0 min-w-[70px] p-4  duration-500' src="/bag-2-2.svg" alt="" />
+          <img onClick={()=>(navigate('/user/productPage',{ state:{ id:data?.product?._id } }))}  className='group-hover:-translate-x-full cursor-pointer absolute top-0 right-0 min-w-[70px] p-4  duration-500' src="/bag-2-2.svg" alt="" />
         }
         <img src="/hearted.svg" onClick={() => setDPopup(true)} className="w-20 h-20 cursor-pointer absolute top-12 right-0 rounded-full p-5 text-[30px] hover:scale-150 duration-500"></img>
 

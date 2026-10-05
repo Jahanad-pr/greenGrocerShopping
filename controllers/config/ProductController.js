@@ -46,7 +46,7 @@ module.exports.upsertProducts = async (req, res) => {
 
             // console.log(updatedCollection)
 
-            if (newProduct && updatedCollection) {
+            if (newProduct) {
                 return res.status(200).json({ mission: true, message: 'successfully created' })
             } else {
                 return res.status(500).json({ mission: false, message: 'nothing updated' })

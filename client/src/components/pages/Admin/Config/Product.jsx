@@ -24,7 +24,7 @@ const Products = () => {
   
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
+  const [itemsPerPage] = useState(5);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortField, setSortField] = useState("latest"); // Changed initial sort to latest
   const [sortOrder, setSortOrder] = useState("descending"); // Changed initial order to descending

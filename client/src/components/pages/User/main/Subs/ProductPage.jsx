@@ -509,7 +509,7 @@ useEffect(() => {
                   <img className="w-5 h-5" src={star} alt="" />
                   <img className="w-5 h-5 grayscale" src={star} alt="" />
                   <img className="w-5 h-5 grayscale" src={star} alt="" />
-                </div>
+                </div>  
               </div>
 
               {/* photos of review */}

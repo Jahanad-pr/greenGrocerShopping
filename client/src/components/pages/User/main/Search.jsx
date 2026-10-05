@@ -24,7 +24,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
   
   return (
-    <div className="flex justify-center absolute bottom-4 right-12 items-center gap-2 my-8 px-3 py-3  bg-[#00000020] rounded-full backdrop-blur-xl">
+    <div className="flex justify-center absolute bottom-4 right-12 items-center gap-2 my-8 px-30 py-3  bg-[#00000020] rounded-full backdrop-blur-xl">
       <button 
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
@@ -539,7 +539,7 @@ const Search = ({userData}) => {
               {/* Products Grid */}
               {showProducts && (
                 <>
-                  <div className="w-full h-auto flex pb-32 my-5 gap-5 relative flex-wrap product-grid items-center justify-center xl:px-10 xl:justify-start">
+                  <div className="w-full h-auto flex pb-32 my-5 gap-5 relative flex-wrap product-grid items-center justify-center xl:px-20 xl:justify-start">
                     {filteredProducts.map((product,index) => (
                       // console.log(product?.category?.name)
                       

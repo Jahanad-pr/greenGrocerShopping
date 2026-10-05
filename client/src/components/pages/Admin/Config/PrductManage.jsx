@@ -31,7 +31,7 @@ const ProductManage = () => {
   const [formData, setFormData] = useState({
     name: "",
     category: "",
-    productCollection: "",
+    // productCollection: "",
     description: "",
     regularPrice: null,
     salePrice: null,
